@@ -1,4 +1,4 @@
-# SwiftParcel ETA service — Module 4, Assignment 5 (DA24B004)
+# Assignment 5 (DA24B004)
 
 Serves a delivery-time (ETA) regression model four ways: a FastAPI REST service (Part A), an MLflow registry with a
 promotion gate and shadow test (Part B), a Ray Serve sticky canary (Part C) and a release smoke test (Part D).

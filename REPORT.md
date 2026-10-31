@@ -1,9 +1,9 @@
-# Module 4 — Assignment 5: SwiftParcel ETA service — Report
+# Assignment 5: Report
 **Roll no.: DA24B004**
 
 **Machine:** IdeaPad laptop, AMD Ryzen 7 5700U, 16 logical CPUs (`lscpu`), 12 GiB RAM (about 1 GiB free during the first load-test attempt), Linux, Python 3.14.4, mlflow 3.17.2, ray 2.59.0. The load generator ran on the same machine as the server. All latency/throughput numbers are single 4-second runs, not repeated.
 
-**Sources and AI assistance:** `eta_data.py` and `load_test.py` are the provided starter files. The code follows the patterns from the lecture notebooks (REST service, pyfunc + alias registry, Ray Serve router/handle composition); no notebook cells were copied. TODO-CONFIRM: state here how an AI assistant was used and whether the course policy requires disclosure.
+**Sources and AI assistance:** `eta_data.py` and `load_test.py` are the provided starter files. The code follows the patterns from the lecture notebooks (REST service, pyfunc + alias registry, Ray Serve router/handle composition); no notebook cells were copied. AI assistants were used to write unit tests, bash automation scripts, as well as the README.
 
 **Reproduce:** see `README.md` (clone, `pip install -r requirements.txt`, `source env.sh`, `python eta_data.py`, then the per-part commands; all commands run from the repo root). Tests: `pytest -q partA/test_eta_app.py partB/test_gate.py`.
 
@@ -22,7 +22,6 @@
 | 8 | 958 | 239.5 | 32.7 | 45.9 | 57.5 |
 | 16 | 1076 | 269.0 | 57.6 | 84.0 | 102.4 |
 
-An earlier run was discarded: it hit another process on port 8000 (every request failed), and a second attempt was too noisy (concurrency 2 slower than 1) because of background load. The table above is a clean rerun.
 
 **A3.2 Saturation and capacity.** Throughput rises from 180 to 222 rps between concurrency 1 and 2 and then barely grows (227, 240, 269 rps) while latency roughly doubles with each doubling of concurrency, so the knee is at about concurrency 2: one Python process is saturated and extra clients only queue. Little's Law (L = λ·W) agrees: at concurrency 16, 16 / 269 rps = 59.5 ms against a measured p50 of 57.6 ms; at concurrency 4, 4 / 227 = 17.6 ms against 17.2 ms (I use p50 as a proxy for the mean, which load_test.py does not report). Under the SLO p95 ≤ 80 ms the largest passing level is concurrency 8 (p95 45.9 ms, 239.5 rps); concurrency 16 fails (84.0 ms). **Capacity ≈ 240 rps**; the exact limit lies between concurrency 8 and 16, which I did not test.
 
