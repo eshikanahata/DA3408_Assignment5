@@ -1,0 +1,6 @@
+requests compared (identical rows to both servers): 200
+versions answering: prod=['v1'] candidate=['v2']
+(i)   mean |prod - candidate| = 9.48 min   (median 7.10, max 51.70)
+(ii)  requests differing by > 10 min = 35.0%  (70/200)
+(iii) p95 latency  prod=10.8 ms   candidate=11.2 ms   (p50 prod=8.4, candidate=9.2)
+extra (uses ground truth, not asked): MAE on these rows prod=11.42  candidate=6.11

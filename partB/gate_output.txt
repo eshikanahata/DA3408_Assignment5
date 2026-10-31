@@ -1,0 +1,30 @@
+/home/eshikanahata/Documents/Module4_DA24B004/.venv/lib/python3.14/site-packages/mlflow/pyfunc/utils/data_validation.py:187: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+thresholds: defaults
+prod     : {'mae': 11.955, 'mae_rush': 19.68, 'mae_rain': 11.623, 'p95_ms': 2.549}
+candidate: {'mae': 6.105, 'mae_rush': 8.58, 'mae_rain': 6.285, 'p95_ms': 3.0}
+relative MAE gain: 0.489
+{
+  "criteria": {
+    "overall_mae_gain": true,
+    "latency_p95": true,
+    "no_regression_rush": true,
+    "no_regression_rain": true
+  },
+  "promote": true
+}
+/home/eshikanahata/Documents/Module4_DA24B004/.venv/lib/python3.14/site-packages/mlflow/pyfunc/utils/data_validation.py:187: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+thresholds: {'min_rel_gain': 0.6}
+prod     : {'mae': 11.955, 'mae_rush': 19.68, 'mae_rain': 11.623, 'p95_ms': 2.639}
+candidate: {'mae': 6.105, 'mae_rush': 8.58, 'mae_rain': 6.285, 'p95_ms': 3.059}
+relative MAE gain: 0.489
+{
+  "criteria": {
+    "overall_mae_gain": false,
+    "latency_p95": true,
+    "no_regression_rush": true,
+    "no_regression_rain": true
+  },
+  "promote": false
+}
